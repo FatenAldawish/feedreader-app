@@ -34,10 +34,9 @@ $(function() {
          function TestURL(feed) {
            it('has a URL defined ' , function() {
            expect(feed.url).toBeDefined();
-           expect(feed.url).not.toBe(null);
-            });
-           }
-
+           expect(feed.url.length).not.toBe(0);
+           });
+         }
 
         /* test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
@@ -46,14 +45,14 @@ $(function() {
          function TestName(feed) {
            it('has a name defined ' , function() {
            expect(feed.name).toBeDefined();
-           expect(feed.name).not.toBe(null);
-            });
-           }
+           expect(feed.name.length).not.toBe(0);
+           });
+         }
 
          for ( var feed of allFeeds) {
            TestURL(feed);
            TestName(feed);
-          }
+         }
     });
 
 
@@ -66,11 +65,7 @@ $(function() {
        */
        it('should be hidden by default', function () {
             expect($("body").hasClass('menu-hidden')).toBe(true);
-
-            var w = window.getComputedStyle(document.querySelector('.menu-hidden'), null).getPropertyValue("transform");
-            expect(w).not.toBe(null);
-
-        });
+       });
 
        /* test that ensures the menu changes
         * visibility when the menu icon is clicked. This test
@@ -78,7 +73,6 @@ $(function() {
         * clicked and does it hide when clicked again.
         */
         it('should changes the visibility when the menu icon is clicked', function () {
-
             // first click display the menu
             $(".menu-icon-link").trigger('click');
             expect($("body").hasClass('menu-hidden')).toBe(false);
@@ -86,7 +80,7 @@ $(function() {
             // if the menu clicked again it'll be hidden
             $(".menu-icon-link").trigger('click');
             expect($("body").hasClass('menu-hidden')).toBe(true);
-         });
+        });
 
     });
 
@@ -96,7 +90,7 @@ $(function() {
     describe('nitial Entries', function() {
       beforeEach(function (done) {
         loadFeed(0, done);
-       });
+      });
       /* test that ensures when the loadFeed
        * function is called and completes its work, there is at least
        * a single .entry element within the .feed container.
@@ -122,7 +116,7 @@ $(function() {
                     done();
                 });
               });
-          });
+      });
 
       /* test that ensures when a new feed is loaded
        * by the loadFeed function that the content actually changes.
